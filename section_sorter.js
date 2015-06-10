@@ -1,6 +1,8 @@
 var fs          = require("fs")
     , assert    = require('assert')
-;
+    , url       = require('url')
+    , path       = require('path')
+    ;
 
 
 function Section_sorter(mapping)
@@ -8,27 +10,26 @@ function Section_sorter(mapping)
     if ((this instanceof Section_sorter) == false) return new Section_sorter(mapping);
 
     this.mapping = mapping || false;
-    var sorter_self = this;
 
-    this.loadMapping(function(err, mapping_data) {
-        sorter_self.testMappingData(mapping_data);
-        sorter_self.mapping_data = mapping_data.mapping;
+    var data = this.loadMapping();
+    this.testMappingData(data);
 
-        sorter_self.getSection("asd");
-    });
+    this.mapping_data = data.mapping;
 }
 
-Section_sorter.prototype.loadMapping = function loadMappingFN(callback)
+Section_sorter.prototype.loadMapping = function loadMappingFN()
 {
-    fs.readFile(this.mapping, 'utf8', function(err, mapping_data) {
-        if(err) callback(err);
+    var mapping_data = fs.readFileSync(this.mapping, 'utf8');
 
-        if (mapping_data !== "") {
-            callback(null, JSON.parse(mapping_data));
-        } else {
-            callback("No mapping data in " + this.mapping);
-        }
-    });
+    if (mapping_data !== "") {
+
+        return JSON.parse(mapping_data);
+
+    } else {
+
+        throw Error("No mapping data in " + this.mapping);
+
+    }
 };
 
 Section_sorter.prototype.testMappingData = function testMappingDataFN(mapping_data)
@@ -36,7 +37,15 @@ Section_sorter.prototype.testMappingData = function testMappingDataFN(mapping_da
     assert.equal(true, mapping_data.hasOwnProperty("mapping"));
 };
 
-Section_sorter.prototype.search = function searchFN(section_name, callback)
+Section_sorter.prototype.searchFromUrl = function searchFromUrlFN(entry_url)
+{
+    var url_data = url.parse(entry_url);
+    var path_data = path.dirname(url_data.pathname);
+
+    return this.search(path_data);
+};
+
+Section_sorter.prototype.search = function searchFN(section_name)
 {
     var self = this;
     var looper = function(data, section_name){
