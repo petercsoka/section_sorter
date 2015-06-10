@@ -2,7 +2,7 @@
   "name": "section_sorter",
   "version": "1.0.0",
   "description": "Section sorting module for migrations",
-  "main": "secrtion_sorter.js",
+  "main": "section_sorter.js",
   "scripts": {
     "test": "mocha"
   },
