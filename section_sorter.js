@@ -45,6 +45,11 @@ Section_sorter.prototype.searchFromUrl = function searchFromUrlFN(entry_url)
     return this.search(path_data);
 };
 
+Section_sorter.prototype.getSectionById = function getSectionByIdFN(section_id)
+{
+    return this.mapping_data[section_id];
+};
+
 Section_sorter.prototype.search = function searchFN(section_name)
 {
     var self = this;
