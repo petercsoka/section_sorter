@@ -4,7 +4,7 @@
   "description": "Section sorting module for migrations",
   "main": "secrtion_sorter.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -13,5 +13,20 @@
   "author": "Peter Csoka",
   "devDependencies": {
     "mocha": "^2.2.5"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/petercsoka/section_sorter/issues"
+  },
+  "homepage": "https://github.com/petercsoka/section_sorter",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "keywords": [
+    "section",
+    "sorting",
+    "migration",
+    "mocha"
+  ],
+  "license": "ISC"
 }
