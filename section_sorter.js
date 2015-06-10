@@ -50,6 +50,23 @@ Section_sorter.prototype.getSectionById = function getSectionByIdFN(section_id)
     return this.mapping_data[section_id];
 };
 
+Section_sorter.prototype.getMainAndSubSection = function getMainAndSubSectionsFN(section_data)
+{
+    if (section_data[1].length > 1) {
+        //It's a sub section
+        return [
+            this.getSectionById(section_data[1][0]).section_id,
+            section_data[0]
+        ]
+    } else {
+        //It's a main section
+        return [
+            section_data[0],
+            0
+        ]
+    }
+}
+
 Section_sorter.prototype.search = function searchFN(section_name)
 {
     var self = this;
