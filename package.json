@@ -1,0 +1,17 @@
+{
+  "name": "section_sorter",
+  "version": "1.0.0",
+  "description": "Section sorting module for migrations",
+  "main": "secrtion_sorter.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/petercsoka/section_sorter"
+  },
+  "author": "Peter Csoka",
+  "devDependencies": {
+    "mocha": "^2.2.5"
+  }
+}

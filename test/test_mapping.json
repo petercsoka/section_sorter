@@ -1,0 +1,10 @@
+{
+  "mapping": {
+    "1" : {"section_id": 1, "name": "parent1"},
+    "2" : {"section_id": 2, "name": "parent2"},
+      "3" : {"section_id": 1, "name": "child1", "parent":2},
+        "4" : {"section_id": 2, "name": "child1-1", "parent":3},
+    "5" : {"section_id": 3, "name": "parent3"},
+    "6" : {"section_id": 4, "name": "parent4"}
+  }
+}
